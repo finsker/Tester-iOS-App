@@ -15,13 +15,6 @@ class ViewController: UIViewController {
     var falseSelectedColor = #colorLiteral(red: 1, green: 0.7718817678, blue: 0.6401711963, alpha: 1)
     var isAnswerSelected = false
     var idOfSelectedAnswer = 0
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        showNewQuestion()
-        setupView()
-        var b = UIImage(named: "hamburg.frage1.png")
-        imageView.image = UIImage(named: "hamburg.frage1.png")
-    }
     
     @IBOutlet var answerButtons: [UIButton]!
     @IBOutlet weak var questionLabel: UILabel!
@@ -41,11 +34,20 @@ class ViewController: UIViewController {
         }
         set {
             if newValue != "" {
-                var image = UIImage(named: newValue)
-                imageView.image = image
+//                var image = UIImage(named: newValue)
+//                imageView.image = image
             }
         }
     }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        showNewQuestion()
+        setupView()
+        self.imageView.image = UIImage(named: "image1")
+    }
+    
     @IBAction func onAnswerTouch(_ sender: UIButton) {
         if !isAnswerSelected {
         sender.backgroundColor = sender.tag == test.currentQuestion?.idOfRightAnswer ? trueSelectedColor : falseSelectedColor

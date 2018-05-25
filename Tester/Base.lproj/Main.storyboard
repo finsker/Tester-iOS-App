@@ -27,10 +27,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="177.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Urt-As-lOn">
-                                                <rect key="frame" x="0.0" y="0.0" width="97.5" height="177.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="243.5" height="177.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="JQ1-1K-5HY">
-                                                <rect key="frame" x="105.5" y="0.0" width="194.5" height="177.5"/>
+                                                <rect key="frame" x="251.5" y="0.0" width="48.5" height="177.5"/>
                                                 <color key="backgroundColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -39,7 +39,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="JQ1-1K-5HY" firstAttribute="top" secondItem="vfi-6f-t2e" secondAttribute="top" id="AU2-yf-sso"/>
-                                            <constraint firstItem="Urt-As-lOn" firstAttribute="width" secondItem="JQ1-1K-5HY" secondAttribute="width" multiplier="0.5" id="KxP-GH-5hn"/>
+                                            <constraint firstItem="Urt-As-lOn" firstAttribute="width" secondItem="JQ1-1K-5HY" secondAttribute="width" multiplier="5" id="KxP-GH-5hn"/>
                                             <constraint firstItem="Urt-As-lOn" firstAttribute="top" secondItem="vfi-6f-t2e" secondAttribute="top" id="VEW-Fn-XLh"/>
                                         </constraints>
                                     </stackView>
