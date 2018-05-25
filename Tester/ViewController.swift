@@ -34,8 +34,9 @@ class ViewController: UIViewController {
         }
         set {
             if newValue != "" {
-//                var image = UIImage(named: newValue)
-//                imageView.image = image
+                var image = UIImage(named: newValue)
+                imageView.image = image
+                imageView.contentMode = UIViewContentMode.scaleAspectFit
             }
         }
     }
@@ -45,7 +46,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         showNewQuestion()
         setupView()
-        self.imageView.image = UIImage(named: "image1")
     }
     
     @IBAction func onAnswerTouch(_ sender: UIButton) {

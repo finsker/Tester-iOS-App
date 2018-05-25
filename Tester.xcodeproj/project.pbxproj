@@ -16,6 +16,7 @@
 		110E5BAF20B6F7CE009C97D5 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110E5BAE20B6F7CE009C97D5 /* Test.swift */; };
 		1113FC8020B850A600E5E187 /* hamburg.frage1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1113FC7E20B850A500E5E187 /* hamburg.frage1.png */; };
 		1113FC8120B850A600E5E187 /* hamburg.frage8.png in Resources */ = {isa = PBXBuildFile; fileRef = 1113FC7F20B850A600E5E187 /* hamburg.frage8.png */; };
+		1113FC8420B851B800E5E187 /* Intsruments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113FC8320B851B800E5E187 /* Intsruments.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		110E5BAE20B6F7CE009C97D5 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		1113FC7E20B850A500E5E187 /* hamburg.frage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamburg.frage1.png; sourceTree = "<group>"; };
 		1113FC7F20B850A600E5E187 /* hamburg.frage8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamburg.frage8.png; sourceTree = "<group>"; };
+		1113FC8320B851B800E5E187 /* Intsruments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intsruments.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +69,7 @@
 				110E5B9D20B6F1FA009C97D5 /* Main.storyboard */,
 				110E5BAD20B6F79D009C97D5 /* Models */,
 				110E5BA020B6F1FB009C97D5 /* Assets.xcassets */,
-				1113FC7E20B850A500E5E187 /* hamburg.frage1.png */,
-				1113FC7F20B850A600E5E187 /* hamburg.frage8.png */,
+				1113FC8220B8511E00E5E187 /* images */,
 				110E5BA220B6F1FB009C97D5 /* LaunchScreen.storyboard */,
 				110E5BA520B6F1FB009C97D5 /* Info.plist */,
 			);
@@ -80,8 +81,18 @@
 			children = (
 				110E5BAB20B6F786009C97D5 /* Question.swift */,
 				110E5BAE20B6F7CE009C97D5 /* Test.swift */,
+				1113FC8320B851B800E5E187 /* Intsruments.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1113FC8220B8511E00E5E187 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				1113FC7E20B850A500E5E187 /* hamburg.frage1.png */,
+				1113FC7F20B850A600E5E187 /* hamburg.frage8.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +172,7 @@
 				110E5BAF20B6F7CE009C97D5 /* Test.swift in Sources */,
 				110E5B9C20B6F1FA009C97D5 /* ViewController.swift in Sources */,
 				110E5B9A20B6F1FA009C97D5 /* AppDelegate.swift in Sources */,
+				1113FC8420B851B800E5E187 /* Intsruments.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
