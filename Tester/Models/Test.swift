@@ -32,8 +32,8 @@ class Test {
         return nil
     }
     
-    func nextAnswer(idOfAnswer: Int)-> Bool {
-        if currentQuestion?.idOfRightAnswer == idOfAnswer, currentQuestion != nil {
+    func nextAnswer(isRight: Bool)-> Bool {
+        if isRight, currentQuestion != nil {
             rightAnswers += 1
             currentQuestion = nil
             return true

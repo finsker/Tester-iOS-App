@@ -34,9 +34,10 @@ class ViewController: UIViewController {
         }
         set {
             if newValue != "" {
-                var image = UIImage(named: newValue)
-                imageView.image = image
-                imageView.contentMode = UIViewContentMode.scaleAspectFit
+                imageView.image = UIImage(named: newValue)
+            }
+            else {
+                imageView.image = UIImage(named: "QuestionMark.png")
             }
         }
     }
@@ -50,14 +51,14 @@ class ViewController: UIViewController {
     
     @IBAction func onAnswerTouch(_ sender: UIButton) {
         if !isAnswerSelected {
-        sender.backgroundColor = sender.tag == test.currentQuestion?.idOfRightAnswer ? trueSelectedColor : falseSelectedColor
+            sender.backgroundColor = sender.tag == 1 ? trueSelectedColor : falseSelectedColor
             idOfSelectedAnswer = sender.tag
             isAnswerSelected = true
         }
     }
     
     @IBAction func onNextTouch(_ sender: UIButton) {
-        test.nextAnswer(idOfAnswer: idOfSelectedAnswer)
+        test.nextAnswer(isRight: sender.tag == 1)
         isAnswerSelected = false
         showNewQuestion()
         updateView()
@@ -71,7 +72,7 @@ class ViewController: UIViewController {
             for n in question.answers.indices {
                 let answer = question.answers[n]
                 answerButtons[n].setTitle(answer.text, for: UIControlState.normal)
-                answerButtons[n].tag = answer.id!
+                answerButtons[n].tag = answer.isRight ? 1 : 0
             }
         } else {
             //clearView()
@@ -91,6 +92,7 @@ class ViewController: UIViewController {
         questionLabel.backgroundColor = defaultColor
         questionLabel.layer.cornerRadius = 5
         questionLabel.clipsToBounds = true
+        imageView.contentMode = UIViewContentMode.scaleAspectFit
     }
     func updateView() {
         for but in answerButtons {

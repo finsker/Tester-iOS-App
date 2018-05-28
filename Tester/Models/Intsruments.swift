@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+class Downloader{
+    
+    let dataURL = "http://nikbali-ru.1gb.ru/mywebproject/givemequestion?id=0"
+}

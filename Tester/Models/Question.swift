@@ -7,38 +7,34 @@
 //
 
 import Foundation
-struct Answer:Codable{
-    var text: String?
-    var id: Int?
+struct Answer: Codable{
+    var text: String
+    var isRight: Bool
 }
 struct Question: Codable{
     
     private(set) var textOfQuestion: String
     private(set) var linkOfImageForQuestion: String
     private(set) var answers: Array<Answer>
-    private(set) var idOfRightAnswer: Int?
-    private(set) var idOfQuestion: UInt32?
+    private(set) var id: UInt32
     
-    init(withText text:String, withImage image: String, withAnswers: [String],withId id: UInt32 ){
+    ///В данный момент инициализатор устроен так, что, верный ответ нужно подавать первым в списке ответов. Его верность автоматически уст. true
+    init(withText text:String, withImage imageLink: String, withAnswers: [String], with id: UInt32){
         textOfQuestion = text
-        linkOfImageForQuestion = image
-        idOfQuestion = id
-        answers = Array<Answer>()
-        for str in withAnswers {
-            answers.append(Answer(text: str, id: 16.arc4random))
-        }
-        idOfRightAnswer = answers.first?.id
+        linkOfImageForQuestion = imageLink
+        self.id = id
+        answers =  withAnswers.map({Answer(text: $0, isRight: false)})
+        answers[0].isRight = true
         answers.shuffle()
+        self.id = id
     }
-    init(withText text:String, withImage image: String, withAnswers: [String]){
+    ///В данный момент инициализатор устроен так, что, верный ответ нужно подавать первым в списке ответов. Его верность автоматически уст. true
+    init(withText text:String, withImage imageLink: String, withAnswers: [String]){
         textOfQuestion = text
-        linkOfImageForQuestion = image
-        idOfQuestion = UInt32(100000.arc4random)
-        answers = Array<Answer>()
-        for str in withAnswers {
-            answers.append(Answer(text: str, id: 16.arc4random))
-        }
-        idOfRightAnswer = answers.first?.id
+        linkOfImageForQuestion = imageLink
+        self.id = UInt32(100000.arc4random)
+        answers =  withAnswers.map({Answer(text: $0, isRight: false)})
+        answers[0].isRight = true
         answers.shuffle()
     }
 }
