@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var test = Test(withQuestions: Data.init().hamburg)
+    var test = Test(withQuestions: tempData.init().hamburg)
     var defaultColor = #colorLiteral(red: 0.8274509804, green: 0.8431372549, blue: 0.831372549, alpha: 1)
     var trueSelectedColor = #colorLiteral(red: 0.8459352261, green: 1, blue: 0.662603968, alpha: 1)
     var falseSelectedColor = #colorLiteral(red: 1, green: 0.7718817678, blue: 0.6401711963, alpha: 1)
@@ -102,7 +102,7 @@ class ViewController: UIViewController {
 
 }
 
-struct Data{
+struct tempData{
     let hamburg = [
         Question(withText: "Welches Wappen gehört zur Freien und Hansestadt Hamburg?", withImage: "hamburg.frage1.png", withAnswers: ["2","1","3","4"]),
         Question(withText: "Welches ist ein Bezirk von Hamburg? ", withImage: "", withAnswers: ["Altona","Hemelingen","Pankow","Mecklenburgische Seenplatte"]),
