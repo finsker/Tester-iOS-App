@@ -14,14 +14,15 @@ struct Answer: Codable{
 struct Question: Codable{
     
     private(set) var textOfQuestion: String
-    private(set) var linkOfImageForQuestion: String
+//    private(set) var linkOfImageForQuestion: String
+    private(set) var stringOfImageForQuestion: String
     private(set) var answers: Array<Answer>
     private(set) var id: UInt32
     
     ///В данный момент инициализатор устроен так, что, верный ответ нужно подавать первым в списке ответов. Его верность автоматически уст. true
     init(withText text:String, withImage imageLink: String, withAnswers: [String], with id: UInt32){
         textOfQuestion = text
-        linkOfImageForQuestion = imageLink
+        stringOfImageForQuestion = imageLink
         self.id = id
         answers =  withAnswers.map({Answer(text: $0, isRight: false)})
         answers[0].isRight = true
@@ -31,7 +32,7 @@ struct Question: Codable{
     ///В данный момент инициализатор устроен так, что, верный ответ нужно подавать первым в списке ответов. Его верность автоматически уст. true
     init(withText text:String, withImage imageLink: String, withAnswers: [String]){
         textOfQuestion = text
-        linkOfImageForQuestion = imageLink
+        stringOfImageForQuestion = imageLink
         self.id = UInt32(100000.arc4random)
         answers =  withAnswers.map({Answer(text: $0, isRight: false)})
         answers[0].isRight = true
@@ -39,7 +40,7 @@ struct Question: Codable{
     }
     init(json: [String: Any]){
         textOfQuestion = json["textOfQuestion"] as? String ?? ""
-        linkOfImageForQuestion = json["linkOfImageForQuestion"] as? String ?? ""
+        stringOfImageForQuestion = json["linkOfImageForQuestion"] as? String ?? ""
         answers = json["answers"] as? Array<Answer> ?? Array<Answer>()
         id = json["id"] as? UInt32 ?? 1
     }

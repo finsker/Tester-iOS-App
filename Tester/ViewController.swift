@@ -47,6 +47,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         showNewQuestion()
         setupView()
+        if let message = Instruments.getSourceCode(by: "http://nikbali-ru.1gb.ru/mywebproject/queryquestion?id=12") {
+            guard let data = message.data(using: .utf8) else { return }
+            print(message)
+            if let question = try? JSONDecoder().decode(Question.self, from: data){
+            test.questions.append(question)
+            }
+        }
     }
     
     @IBAction func onAnswerTouch(_ sender: UIButton) {
@@ -58,17 +65,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onNextTouch(_ sender: UIButton) {
-        var b = 0
         test.nextAnswer(isRight: sender.tag == 1)
         isAnswerSelected = false
         showNewQuestion()
         updateView()
+       
         
     }
     
     func showNewQuestion(){
         if let question = test.nextQuestion(){
-            linkOfImage = question.linkOfImageForQuestion
+            linkOfImage = question.stringOfImageForQuestion
             textOfQuestion = question.textOfQuestion
             for n in question.answers.indices {
                 let answer = question.answers[n]
