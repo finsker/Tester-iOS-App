@@ -37,6 +37,12 @@ struct Question: Codable{
         answers[0].isRight = true
         answers.shuffle()
     }
+    init(json: [String: Any]){
+        textOfQuestion = json["textOfQuestion"] as? String ?? ""
+        linkOfImageForQuestion = json["linkOfImageForQuestion"] as? String ?? ""
+        answers = json["answers"] as? Array<Answer> ?? Array<Answer>()
+        id = json["id"] as? UInt32 ?? 1
+    }
 }
 
 extension Int{
