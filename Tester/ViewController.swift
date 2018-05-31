@@ -58,6 +58,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onNextTouch(_ sender: UIButton) {
+        var b = 0
         test.nextAnswer(isRight: sender.tag == 1)
         isAnswerSelected = false
         showNewQuestion()
