@@ -9,20 +9,22 @@ import Foundation
 class Test {
     
     var questions = [Question]()
-    var rightAnswers = 0
-    var size = 0
+    private var rightAnswers = 0
+    private var size = 0
     var currentQuestion: Question?
+    var score: Double {
+        return Double(rightAnswers) / Double (size)
+    }
     
     
-    
-    
-    init(withQuestions: [Question])
+    /// standtart initializer
+    init(withQuestions: [Question], shuffle: Bool)
     {
         questions = withQuestions
         size = questions.count
-        questions.shuffle()
+        if shuffle { questions.shuffle() }
     }
-    
+    ///pops and returns a question from questions array
     func nextQuestion( ) -> Question? {
         currentQuestion = nil
         if let element = questions.popLast() {
@@ -31,8 +33,8 @@ class Test {
         }
         return nil
     }
-    
-    func nextAnswer(isRight: Bool)-> Bool {
+    ///accepts answer for current question
+    func nextAnswer(isRight: Bool) -> Bool {
         if isRight, currentQuestion != nil {
             rightAnswers += 1
             currentQuestion = nil
@@ -40,5 +42,6 @@ class Test {
         }
         return false
     }
+    
 }
 

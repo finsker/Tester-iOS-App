@@ -14,10 +14,7 @@
 		110E5BA420B6F1FB009C97D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110E5BA220B6F1FB009C97D5 /* LaunchScreen.storyboard */; };
 		110E5BAC20B6F786009C97D5 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110E5BAB20B6F786009C97D5 /* Question.swift */; };
 		110E5BAF20B6F7CE009C97D5 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110E5BAE20B6F7CE009C97D5 /* Test.swift */; };
-		1113FC8020B850A600E5E187 /* hamburg.frage1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1113FC7E20B850A500E5E187 /* hamburg.frage1.png */; };
-		1113FC8120B850A600E5E187 /* hamburg.frage8.png in Resources */ = {isa = PBXBuildFile; fileRef = 1113FC7F20B850A600E5E187 /* hamburg.frage8.png */; };
-		1113FC8420B851B800E5E187 /* Intsruments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113FC8320B851B800E5E187 /* Intsruments.swift */; };
-		1113FC8620B853C500E5E187 /* QuestionMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 1113FC8520B853C500E5E187 /* QuestionMark.png */; };
+		1113FC8620B853C500E5E187 /* questionMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 1113FC8520B853C500E5E187 /* questionMark.png */; };
 		1181A43C20C04BEE007422AF /* Instruments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181A43B20C04BEE007422AF /* Instruments.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,10 +28,7 @@
 		110E5BA520B6F1FB009C97D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		110E5BAB20B6F786009C97D5 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		110E5BAE20B6F7CE009C97D5 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
-		1113FC7E20B850A500E5E187 /* hamburg.frage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamburg.frage1.png; sourceTree = "<group>"; };
-		1113FC7F20B850A600E5E187 /* hamburg.frage8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamburg.frage8.png; sourceTree = "<group>"; };
-		1113FC8320B851B800E5E187 /* Intsruments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intsruments.swift; sourceTree = "<group>"; };
-		1113FC8520B853C500E5E187 /* QuestionMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QuestionMark.png; sourceTree = "<group>"; };
+		1113FC8520B853C500E5E187 /* questionMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = questionMark.png; sourceTree = "<group>"; };
 		1181A43B20C04BEE007422AF /* Instruments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instruments.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,9 +75,8 @@
 		110E5BAD20B6F79D009C97D5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				110E5BAB20B6F786009C97D5 /* Question.swift */,
 				110E5BAE20B6F7CE009C97D5 /* Test.swift */,
-				1113FC8320B851B800E5E187 /* Intsruments.swift */,
+				110E5BAB20B6F786009C97D5 /* Question.swift */,
 				1181A43B20C04BEE007422AF /* Instruments.swift */,
 			);
 			path = Models;
@@ -92,9 +85,7 @@
 		1113FC8220B8511E00E5E187 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				1113FC8520B853C500E5E187 /* QuestionMark.png */,
-				1113FC7E20B850A500E5E187 /* hamburg.frage1.png */,
-				1113FC7F20B850A600E5E187 /* hamburg.frage8.png */,
+				1113FC8520B853C500E5E187 /* questionMark.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -167,12 +158,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1113FC8120B850A600E5E187 /* hamburg.frage8.png in Resources */,
 				110E5BA420B6F1FB009C97D5 /* LaunchScreen.storyboard in Resources */,
-				1113FC8620B853C500E5E187 /* QuestionMark.png in Resources */,
+				1113FC8620B853C500E5E187 /* questionMark.png in Resources */,
 				110E5BA120B6F1FB009C97D5 /* Assets.xcassets in Resources */,
 				110E5B9F20B6F1FA009C97D5 /* Main.storyboard in Resources */,
-				1113FC8020B850A600E5E187 /* hamburg.frage1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,7 +177,6 @@
 				110E5B9C20B6F1FA009C97D5 /* ViewController.swift in Sources */,
 				110E5B9A20B6F1FA009C97D5 /* AppDelegate.swift in Sources */,
 				1181A43C20C04BEE007422AF /* Instruments.swift in Sources */,
-				1113FC8420B851B800E5E187 /* Intsruments.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

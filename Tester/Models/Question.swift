@@ -8,66 +8,39 @@
 
 import Foundation
 struct Answer: Codable{
+    var id: Int
     var text: String
     var isRight: Bool
 }
 struct Question: Codable{
     
     private(set) var textOfQuestion: String
-//    private(set) var linkOfImageForQuestion: String
-    private(set) var stringOfImageForQuestion: String
+    private(set) var linkOfImageForQuestion: String
     private(set) var answers: Array<Answer>
     private(set) var id: UInt32
-    
-    ///В данный момент инициализатор устроен так, что, верный ответ нужно подавать первым в списке ответов. Его верность автоматически уст. true
-    init(withText text:String, withImage imageLink: String, withAnswers: [String], with id: UInt32){
+    ///Initialize with [Answer] answers
+    init(text: String, imageLink: String, withAnswers: [Answer], id: UInt32, shuffle: Bool){
         textOfQuestion = text
-        stringOfImageForQuestion = imageLink
+        linkOfImageForQuestion = imageLink
         self.id = id
-        answers =  withAnswers.map({Answer(text: $0, isRight: false)})
-        answers[0].isRight = true
-        answers.shuffle()
-        self.id = id
+        answers = withAnswers
+        if shuffle { answers.shuffle() }
     }
-    ///В данный момент инициализатор устроен так, что, верный ответ нужно подавать первым в списке ответов. Его верность автоматически уст. true
-    init(withText text:String, withImage imageLink: String, withAnswers: [String]){
+    ///Initialize with [String] Answers
+    init(withText text:String, withImage imageLink: String, withAnswers: [String], shuffle: Bool){
         textOfQuestion = text
-        stringOfImageForQuestion = imageLink
+        linkOfImageForQuestion = imageLink
         self.id = UInt32(100000.arc4random)
-        answers =  withAnswers.map({Answer(text: $0, isRight: false)})
+        answers =  withAnswers.map({Answer(id: 500.arc4random, text: $0, isRight: false)})
         answers[0].isRight = true
-        answers.shuffle()
+        if shuffle { answers.shuffle() }
     }
+    ///Initialize with JSON
     init(json: [String: Any]){
         textOfQuestion = json["textOfQuestion"] as? String ?? ""
-        stringOfImageForQuestion = json["linkOfImageForQuestion"] as? String ?? ""
+        linkOfImageForQuestion = json["linkOfImageForQuestion"] as? String ?? ""
         answers = json["answers"] as? Array<Answer> ?? Array<Answer>()
         id = json["id"] as? UInt32 ?? 1
     }
 }
 
-extension Int{
-    var arc4random: Int {
-        if self > 0 {
-            return Int(arc4random_uniform(UInt32(self)))
-        } else if self < 0 {
-            return -Int(arc4random_uniform(UInt32(abs(self))))
-        } else {
-            return 0
-        }
-    }
-}
-
-extension MutableCollection {
-    mutating func shuffle(){
-        let c = count
-        guard c > 1 else {
-            return
-        }
-        for (firstUnshuffled, unshuffledCount) in zip(indices,stride(from: c, to: 1, by: -1)) {
-            let d: Int = numericCast(arc4random_uniform(numericCast(unshuffledCount)))
-            let i = index(firstUnshuffled, offsetBy: d)
-            swapAt(firstUnshuffled, i)
-        }
-    }
-}

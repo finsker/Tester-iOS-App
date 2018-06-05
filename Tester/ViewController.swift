@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var test = Test(withQuestions: tempData.init().hamburg)
+    var test = Test(withQuestions: Instruments.getRandomQuestions(amount: 10)!, shuffle: false)
     var defaultColor = #colorLiteral(red: 0.8274509804, green: 0.8431372549, blue: 0.831372549, alpha: 1)
     var trueSelectedColor = #colorLiteral(red: 0.8459352261, green: 1, blue: 0.662603968, alpha: 1)
     var falseSelectedColor = #colorLiteral(red: 1, green: 0.7718817678, blue: 0.6401711963, alpha: 1)
@@ -33,11 +33,10 @@ class ViewController: UIViewController {
             return "sorry"
         }
         set {
-            if newValue != "" {
-                imageView.image = UIImage(named: newValue)
-            }
-            else {
-                imageView.image = UIImage(named: "QuestionMark.png")
+            if let data = Instruments.getImageData(by: newValue) {
+                imageView.image = UIImage(data: data)
+            } else {
+                imageView.image = UIImage(named: "questionMark.png")
             }
         }
     }
@@ -47,35 +46,28 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         showNewQuestion()
         setupView()
-        if let message = Instruments.getSourceCode(by: "http://nikbali-ru.1gb.ru/mywebproject/queryquestion?id=12") {
-            guard let data = message.data(using: .utf8) else { return }
-            print(message)
-            if let question = try? JSONDecoder().decode(Question.self, from: data){
-            test.questions.append(question)
-            }
-        }
     }
     
     @IBAction func onAnswerTouch(_ sender: UIButton) {
         if !isAnswerSelected {
-            sender.backgroundColor = sender.tag == 1 ? trueSelectedColor : falseSelectedColor
+            sender.backgroundColor = test.nextAnswer(isRight: sender.tag == 1) ? trueSelectedColor : falseSelectedColor
             idOfSelectedAnswer = sender.tag
             isAnswerSelected = true
         }
     }
     
     @IBAction func onNextTouch(_ sender: UIButton) {
-        test.nextAnswer(isRight: sender.tag == 1)
+        
         isAnswerSelected = false
         showNewQuestion()
         updateView()
-       
+        
         
     }
     
     func showNewQuestion(){
         if let question = test.nextQuestion(){
-            linkOfImage = question.stringOfImageForQuestion
+            linkOfImage = question.linkOfImageForQuestion
             textOfQuestion = question.textOfQuestion
             for n in question.answers.indices {
                 let answer = question.answers[n]
@@ -84,7 +76,7 @@ class ViewController: UIViewController {
             }
         } else {
             //clearView()
-            textOfQuestion = "Sie haben \(test.rightAnswers) von \(test.size) richtig beantwortet"
+            textOfQuestion = "\(test.score)"
         }
     }
     func setupView() {
@@ -107,21 +99,5 @@ class ViewController: UIViewController {
             but.backgroundColor = defaultColor
         }
     }
-
-}
-
-struct tempData{
-    let hamburg = [
-        Question(withText: "Welches Wappen gehört zur Freien und Hansestadt Hamburg?", withImage: "hamburg.frage1.png", withAnswers: ["2","1","3","4"]),
-        Question(withText: "Welches ist ein Bezirk von Hamburg? ", withImage: "", withAnswers: ["Altona","Hemelingen","Pankow","Mecklenburgische Seenplatte"]),
-        Question(withText: "Für wie viele Jahre wird das Landesparlament in Hamburg gewählt?", withImage: "", withAnswers: ["5","4","3","6"]),
-        Question(withText: "Ab welchem Alter darf man in Hamburg bei Kommunalwahlen (Wahl der Bezirksversammlungen) wählen?", withImage: "", withAnswers: ["16", "14","18","20"]),
-        Question(withText: "Welche Farben hat die Landesflagge von Hamburg?", withImage: "", withAnswers: ["weiß-rot","blau-weiß-rot","grün-weiß-rot","schwarz-gelb"]),
-        Question(withText: "Wo können Sie sich in Hamburg über politische Themen informieren?", withImage: "", withAnswers: ["bei der Landeszentrale für politische Bildung", "beim Ordnungsamt der Gemeinde","bei der Verbraucherzentrale"," bei den Kirchen"]),
-        Question(withText: "Welches Bundesland ist ein Stadtstaat? ", withImage: "", withAnswers: ["Hamburg", "Sachsen","Bayern","Thüringen"]),
-        Question(withText: "Welches Bundesland ist Hamburg?", withImage: "hamburg.frage8.png", withAnswers: ["3", "1","2","4"]),
-        Question(withText: "Wie nennt man den Regierungschef / die Regierungschefin des Stadtstaates Hamburg?", withImage: "", withAnswers: ["Erster Bürgermeister / Erste Bürgermeisterin", "Ministerpräsident / Ministerpräsidentin","Regierender Senator / Regierende Senatorin"," Oberbürgermeister / Oberbürgermeisterin"]),
-        Question(withText: "Welchen Senator / welche Senatorin hat Hamburg nicht?", withImage: "", withAnswers: ["Senator / Senatorin für Außenbeziehungen", "Justizsenator / Justizsenatorin","Finanzsenator / Finanzsenatorin","Innensenator / Innensenatorin"]),
-        ]
     
 }
