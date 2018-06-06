@@ -8,21 +8,26 @@
 
 import Foundation
 class Instruments {
+    private static var imageRequest = "http://nikbali.ru/uploadDir/"
+    private static var randomQuestionsRequest = "http://nikbali.ru/queryquestion?rand="
+    private static var questionByIdRequest = "http://nikbali.ru/queryquestion?id="
+    
     
     /// returns json by link in "Data" format
     private static func getData(by link: String) -> Data? {
         guard let url = URL(string: link) else { return nil }
+        print("url: \(link)")
         do {
             let data = try Data(contentsOf: url)
             return data
         } catch {
-            print("url was not found")
+            print("no data by URL: \(url)")
             return nil
         }
     }
     ///returns a question by id
     public static func getQuestionBy(id: Int) -> Question? {
-        let url = "http://nikbali.ru/queryquestion?id=" + String(id)
+        let url = questionByIdRequest + String(id)
         if let data = getData(by: url) {
             if let question = try? JSONDecoder().decode(Question.self, from: data){
                 return question
@@ -30,20 +35,22 @@ class Instruments {
         }
         return nil
     }
+    
     /// return "amount" questions form server
     public static func getRandomQuestions(amount: Int) -> [Question]? {
         var questions = [Question]()
-        let url = "http://nikbali.ru/queryquestion?rand=" + String(amount)
+        let url =  randomQuestionsRequest + String(amount)
         if let data = getData(by: url) {
             if let question = try? JSONDecoder().decode([Question].self, from: data) {
                 questions = question
             }
         }
-        return questions
+        return questions.count != 0 ? questions : nil
     }
+    
     /// returns a Data of Image for UIImage initialization
     public static func getImageData(by name: String) -> Data? {
-        if let url = URL(string: "http://nikbali.ru/uploadDir/" + name){
+        if let url = URL(string: imageRequest + name){
             if let data = try? Data(contentsOf: url) {
                 return data
             }

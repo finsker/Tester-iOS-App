@@ -16,8 +16,9 @@ struct Question: Codable{
     
     private(set) var textOfQuestion: String
     private(set) var linkOfImageForQuestion: String
-    private(set) var answers: Array<Answer>
+    private(set) var answers: [Answer]
     private(set) var id: UInt32
+    
     ///Initialize with [Answer] answers
     init(text: String, imageLink: String, withAnswers: [Answer], id: UInt32, shuffle: Bool){
         textOfQuestion = text
@@ -34,13 +35,6 @@ struct Question: Codable{
         answers =  withAnswers.map({Answer(id: 500.arc4random, text: $0, isRight: false)})
         answers[0].isRight = true
         if shuffle { answers.shuffle() }
-    }
-    ///Initialize with JSON
-    init(json: [String: Any]){
-        textOfQuestion = json["textOfQuestion"] as? String ?? ""
-        linkOfImageForQuestion = json["linkOfImageForQuestion"] as? String ?? ""
-        answers = json["answers"] as? Array<Answer> ?? Array<Answer>()
-        id = json["id"] as? UInt32 ?? 1
     }
 }
 

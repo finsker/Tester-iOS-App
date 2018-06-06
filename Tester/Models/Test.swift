@@ -8,15 +8,26 @@
 import Foundation
 class Test {
     
-    var questions = [Question]()
+    private var questions = [Question]()
     private var rightAnswers = 0
     private var size = 0
-    var currentQuestion: Question?
-    var score: Double {
-        return Double(rightAnswers) / Double (size)
+    
+    ///returns Score value
+    public  var score: Double {
+        return Double(rightAnswers) / Double(size) * 100.0
+    }
+    ///returns count of remaining questions
+    public var countOfQuestion: Int {
+        get{
+            return questions.count
+        }
     }
     
-    
+    ///empty initializer
+    init(){
+        questions = [Question]()
+        size = 0
+    }
     /// standtart initializer
     init(withQuestions: [Question], shuffle: Bool)
     {
@@ -24,23 +35,15 @@ class Test {
         size = questions.count
         if shuffle { questions.shuffle() }
     }
+    
+    
     ///pops and returns a question from questions array
-    func nextQuestion( ) -> Question? {
-        currentQuestion = nil
-        if let element = questions.popLast() {
-            currentQuestion = element
-            return element
-        }
-        return nil
+    func nextQuestion() -> Question? {
+        return questions.popLast()
     }
     ///accepts answer for current question
-    func nextAnswer(isRight: Bool) -> Bool {
-        if isRight, currentQuestion != nil {
-            rightAnswers += 1
-            currentQuestion = nil
-            return true
-        }
-        return false
+    func nextAnswer(isRight: Bool) {
+        rightAnswers += isRight ? 1 : 0
     }
     
 }
