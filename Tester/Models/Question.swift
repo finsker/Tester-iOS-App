@@ -7,20 +7,21 @@
 //
 
 import Foundation
-struct Answer: Codable{
+struct Answer: Encodable, Decodable{
     var id: Int
     var text: String
     var isRight: Bool
 }
-struct Question: Codable{
-    
+struct Question: Encodable, Decodable{
+    private(set) var theme: String
     private(set) var textOfQuestion: String
     private(set) var linkOfImageForQuestion: String
     private(set) var answers: [Answer]
     private(set) var id: UInt32
-    
+
     ///Initialize with [Answer] answers
-    init(text: String, imageLink: String, withAnswers: [Answer], id: UInt32, shuffle: Bool){
+    init(text: String, imageLink: String, withAnswers: [Answer], id: UInt32, withTheme: String, shuffle: Bool){
+        theme = withTheme
         textOfQuestion = text
         linkOfImageForQuestion = imageLink
         self.id = id
@@ -28,7 +29,8 @@ struct Question: Codable{
         if shuffle { answers.shuffle() }
     }
     ///Initialize with [String] Answers
-    init(withText text:String, withImage imageLink: String, withAnswers: [String], shuffle: Bool){
+    init(text:String, imageLink: String, withAnswers: [String], withTheme: String, shuffle: Bool){
+        theme = withTheme
         textOfQuestion = text
         linkOfImageForQuestion = imageLink
         self.id = UInt32(100000.arc4random)

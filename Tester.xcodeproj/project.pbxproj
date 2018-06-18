@@ -16,8 +16,11 @@
 		110E5BAF20B6F7CE009C97D5 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110E5BAE20B6F7CE009C97D5 /* Test.swift */; };
 		1113FC8620B853C500E5E187 /* questionMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 1113FC8520B853C500E5E187 /* questionMark.png */; };
 		1181A43C20C04BEE007422AF /* Instruments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181A43B20C04BEE007422AF /* Instruments.swift */; };
+		11C7DD2A20CDAE86001C8E4F /* customColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C7DD2920CDAE86001C8E4F /* customColors.swift */; };
 		11CE056A20C6BF4D001A6B3A /* startViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CE056920C6BF4D001A6B3A /* startViewController.swift */; };
 		11CE056C20C6DF80001A6B3A /* resultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CE056B20C6DF80001A6B3A /* resultsViewController.swift */; };
+		11ED19AD20C9A82E0065F805 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ED19AC20C9A82E0065F805 /* Extensions.swift */; };
+		11F27FEE20D4003E00BF3948 /* showImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F27FED20D4003E00BF3948 /* showImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +35,11 @@
 		110E5BAE20B6F7CE009C97D5 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		1113FC8520B853C500E5E187 /* questionMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = questionMark.png; sourceTree = "<group>"; };
 		1181A43B20C04BEE007422AF /* Instruments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instruments.swift; sourceTree = "<group>"; };
+		11C7DD2920CDAE86001C8E4F /* customColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customColors.swift; sourceTree = "<group>"; };
 		11CE056920C6BF4D001A6B3A /* startViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startViewController.swift; sourceTree = "<group>"; };
 		11CE056B20C6DF80001A6B3A /* resultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resultsViewController.swift; sourceTree = "<group>"; };
+		11ED19AC20C9A82E0065F805 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		11F27FED20D4003E00BF3948 /* showImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,14 +72,12 @@
 		110E5B9820B6F1FA009C97D5 /* Tester */ = {
 			isa = PBXGroup;
 			children = (
-				11CE056B20C6DF80001A6B3A /* resultsViewController.swift */,
-				110E5B9B20B6F1FA009C97D5 /* questionViewController.swift */,
-				11CE056920C6BF4D001A6B3A /* startViewController.swift */,
+				11C7DD2B20CE7508001C8E4F /* viewControllers */,
 				110E5B9D20B6F1FA009C97D5 /* Main.storyboard */,
 				110E5BA520B6F1FB009C97D5 /* Info.plist */,
 				110E5BAD20B6F79D009C97D5 /* Models */,
-				1113FC8220B8511E00E5E187 /* images */,
 				1181A43A20C04BA9007422AF /* Supporting Files */,
+				1113FC8220B8511E00E5E187 /* images */,
 			);
 			path = Tester;
 			sourceTree = "<group>";
@@ -102,8 +106,21 @@
 				110E5B9920B6F1FA009C97D5 /* AppDelegate.swift */,
 				110E5BA020B6F1FB009C97D5 /* Assets.xcassets */,
 				110E5BA220B6F1FB009C97D5 /* LaunchScreen.storyboard */,
+				11ED19AC20C9A82E0065F805 /* Extensions.swift */,
+				11C7DD2920CDAE86001C8E4F /* customColors.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		11C7DD2B20CE7508001C8E4F /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				11CE056B20C6DF80001A6B3A /* resultsViewController.swift */,
+				110E5B9B20B6F1FA009C97D5 /* questionViewController.swift */,
+				11CE056920C6BF4D001A6B3A /* startViewController.swift */,
+				11F27FED20D4003E00BF3948 /* showImageViewController.swift */,
+			);
+			path = viewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,8 +196,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				110E5BAC20B6F786009C97D5 /* Question.swift in Sources */,
+				11F27FEE20D4003E00BF3948 /* showImageViewController.swift in Sources */,
 				110E5BAF20B6F7CE009C97D5 /* Test.swift in Sources */,
+				11C7DD2A20CDAE86001C8E4F /* customColors.swift in Sources */,
 				110E5B9C20B6F1FA009C97D5 /* questionViewController.swift in Sources */,
+				11ED19AD20C9A82E0065F805 /* Extensions.swift in Sources */,
 				11CE056C20C6DF80001A6B3A /* resultsViewController.swift in Sources */,
 				110E5B9A20B6F1FA009C97D5 /* AppDelegate.swift in Sources */,
 				11CE056A20C6BF4D001A6B3A /* startViewController.swift in Sources */,
